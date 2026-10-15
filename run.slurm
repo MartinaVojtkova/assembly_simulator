@@ -8,12 +8,17 @@
 
 set -euo pipefail
 
-source /hpc/opt/conda/etc/profile.d/conda.sh
-conda activate assembly_simulator
-
 echo "Started: $(date --iso-8601=seconds)"
 echo "Host: $(hostname)"
 echo "Working directory: $(pwd)"
+
+echo "Loading Conda shell support"
+source /hpc/opt/conda/etc/profile.d/conda.sh
+
+environment_path="/hpc/users/marvoj/.conda/envs/assembly_simulator"
+export PATH="${environment_path}/bin:${PATH}"
+
+echo "Using environment: ${environment_path}"
 echo "Snakemake: $(command -v snakemake)"
 echo "Nextflow: $(command -v nextflow)"
 
