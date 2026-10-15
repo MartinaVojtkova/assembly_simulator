@@ -36,14 +36,27 @@ git clone --branch 2.0.1 --depth 1 \
   https://github.com/CAMI-challenge/CAMISIM.git tools/CAMISIM
 ```
 
-CAMISIM 2.0.1 uses Nextflow and creates its own process environments. The
-provided outer Conda environment supplies Nextflow and mamba.
+CAMISIM 2.0.1 uses Nextflow and creates its own process environments.
+
+## Create the workflow environment
+
+Create the outer environment once on the HPC:
+
+```bash
+conda env create \
+  --prefix /hpc/projects/2025/multibiomine/well_trodden_paths/conda_envs/assembly_simulator \
+  --file requirements.yaml
+```
+
+This environment supplies Snakemake, Nextflow, Mamba, and Git. Snakemake
+creates the rule-specific CAMISIM and metaSPAdes environments separately.
 
 ## Run
 
 From `assembly_simulator/`:
 
 ```bash
+conda activate /hpc/projects/2025/multibiomine/well_trodden_paths/conda_envs/assembly_simulator
 mkdir -p logs benchmarks
 snakemake --cores 80 --use-conda --resources mem_mb=1000000
 ```
