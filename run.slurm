@@ -15,12 +15,11 @@ echo "Working directory: $(pwd)"
 echo "Loading Conda shell support"
 source /hpc/opt/conda/etc/profile.d/conda.sh
 
-environment_path="/hpc/users/marvoj/.conda/envs/assembly_simulator"
-export PATH="${environment_path}/bin:${PATH}"
+echo "Activating snakemake-8.30.0"
+conda activate snakemake-8.30.0
 
-echo "Using environment: ${environment_path}"
+echo "Environment activated"
 echo "Snakemake: $(command -v snakemake)"
-echo "Nextflow: $(command -v nextflow)"
 
 mkdir -p logs benchmarks
 

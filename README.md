@@ -40,7 +40,13 @@ CAMISIM 2.0.1 uses Nextflow and creates its own process environments.
 
 ## Create the workflow environment
 
-Create the outer environment once on the HPC:
+The included `requirements.yaml` can be used to create a standalone outer
+environment. On the current HPC, `run.slurm` instead activates the existing
+`snakemake-8.30.0` environment, which is already known to work on compute
+nodes. Snakemake creates the CAMISIM and metaSPAdes rule environments from
+`envs/`.
+
+To create the standalone environment elsewhere:
 
 ```bash
 conda env create \
@@ -48,15 +54,14 @@ conda env create \
   --file requirements.yaml
 ```
 
-This environment supplies Snakemake, Nextflow, Mamba, and Git. Snakemake
-creates the rule-specific CAMISIM and metaSPAdes environments separately.
+This environment supplies Snakemake, Nextflow, Mamba, and Git.
 
 ## Run
 
 From `assembly_simulator/`:
 
 ```bash
-conda activate /hpc/projects/2025/multibiomine/well_trodden_paths/conda_envs/assembly_simulator
+conda activate snakemake-8.30.0
 mkdir -p logs benchmarks
 snakemake --cores 80 --use-conda --resources mem_mb=1000000
 ```
