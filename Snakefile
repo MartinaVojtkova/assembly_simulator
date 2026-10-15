@@ -89,13 +89,16 @@ rule simulate_reads:
         "envs/camisim.yaml"
     params:
         camisim_dir=camisim_dir,
+        camisim_config=lambda wildcards, input: str(
+            pathlib.Path(input.camisim_config).resolve()
+        ),
         work_dir=lambda wildcards: str((workflow_dir / "work" / "nextflow").resolve()),
     shell:
         """
         nextflow run "{params.camisim_dir}/main.nf" \
-          --config "{input.camisim_config}" \
+          --config "{params.camisim_config}" \
           -work-dir "{params.work_dir}" \
-          -resume > "{log}" 2>&1
+          -resume 2>&1 | tee "{log}"
         """
 
 

@@ -36,7 +36,9 @@ git clone --branch 2.0.1 --depth 1 \
   https://github.com/CAMI-challenge/CAMISIM.git tools/CAMISIM
 ```
 
-CAMISIM 2.0.1 uses Nextflow and creates its own process environments.
+CAMISIM 2.0.1 uses Nextflow and creates its own process environments. The
+workflow pins Nextflow 23.10.1 because CAMISIM's configuration syntax is not
+accepted by Nextflow 26.
 
 ## Create the workflow environment
 

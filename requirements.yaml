@@ -4,7 +4,7 @@ channels:
   - bioconda
 dependencies:
   - snakemake=8.30.0
-  - nextflow
+  - nextflow=23.10.1
   - mamba
   - git
 

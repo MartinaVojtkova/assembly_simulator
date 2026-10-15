@@ -2,7 +2,7 @@
 #SBATCH --job-name=ctxm14_sim_assembly
 #SBATCH --output=logs/ctxm14_sim_assembly.%j.out
 #SBATCH --error=logs/ctxm14_sim_assembly.%j.err
-#SBATCH --time=7-00:00:00
+#SBATCH --time=3-00:00:00
 #SBATCH --cpus-per-task=64
 #SBATCH --mem=1000G
 

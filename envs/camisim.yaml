@@ -2,5 +2,6 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - nextflow
+  # CAMISIM 2.0.1 uses conditional includeConfig statements rejected by Nextflow 26.
+  - nextflow=23.10.1
   - mamba
