@@ -9,7 +9,7 @@
 set -euo pipefail
 
 source /hpc/opt/conda/etc/profile.d/conda.sh
-conda activate /hpc/projects/2025/multibiomine/well_trodden_paths/conda_envs/assembly_simulator
+conda activate assembly_simulator
 
 snakemake \
   --snakefile Snakefile \
