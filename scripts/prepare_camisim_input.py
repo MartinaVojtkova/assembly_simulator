@@ -48,10 +48,11 @@ def validate_inputs(rows):
         raise FileNotFoundError(f"Genome files were not found:\n{preview}")
 
     profile_base = Path(snakemake.params.error_profile)
+    # CAMISIM appends 1.txt and 2.txt to this profile prefix.
     missing_profiles = [
-        f"{profile_base}R{read_number}.txt"
+        f"{profile_base}{read_number}.txt"
         for read_number in (1, 2)
-        if not Path(f"{profile_base}R{read_number}.txt").is_file()
+        if not Path(f"{profile_base}{read_number}.txt").is_file()
     ]
     if missing_profiles:
         raise FileNotFoundError(
