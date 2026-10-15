@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - snakemake-minimal=8.30.0
+  - snakemake=8.30.0
   - nextflow
   - mamba
   - git
