@@ -8,7 +8,7 @@ fragment_mean: 350
 fragment_sd: 35
 seed: 14
 
-camisim_cores: 80
+camisim_cores: 64
 camisim_mem_mb: 250000
 
 metaspades_threads: 20
