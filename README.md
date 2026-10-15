@@ -38,7 +38,9 @@ git clone --branch 2.0.1 --depth 1 \
 
 CAMISIM 2.0.1 uses Nextflow and creates its own process environments. The
 workflow pins Nextflow 23.10.1 because CAMISIM's configuration syntax is not
-accepted by Nextflow 26.
+accepted by Nextflow 26. The CAMISIM rule also pins Conda 24.9 because
+Nextflow 23 uses the deprecated `conda create --mkdir` option removed in Conda
+26.
 
 ## Create the workflow environment
 

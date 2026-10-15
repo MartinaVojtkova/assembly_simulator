@@ -4,4 +4,5 @@ channels:
 dependencies:
   # CAMISIM 2.0.1 uses conditional includeConfig statements rejected by Nextflow 26.
   - nextflow=23.10.1
-  - mamba
+  # Nextflow 23 passes --mkdir, which Conda 26 removed.
+  - conda=24.9
