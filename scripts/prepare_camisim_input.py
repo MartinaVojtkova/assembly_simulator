@@ -41,6 +41,28 @@ def validate_rows(rows, samples):
             raise ValueError(f"Sample {sample} has no genomes with positive abundance")
 
 
+def validate_inputs(rows):
+    missing_genomes = [row["genomes"] for row in rows if not Path(row["genomes"]).is_file()]
+    if missing_genomes:
+        preview = "\n".join(missing_genomes[:5])
+        raise FileNotFoundError(f"Genome files were not found:\n{preview}")
+
+    profile_base = Path(snakemake.params.error_profile)
+    missing_profiles = [
+        f"{profile_base}R{read_number}.txt"
+        for read_number in (1, 2)
+        if not Path(f"{profile_base}R{read_number}.txt").is_file()
+    ]
+    if missing_profiles:
+        raise FileNotFoundError(
+            "ART error-profile files were not found:\n" + "\n".join(missing_profiles)
+        )
+
+    camisim_main = Path(snakemake.params.camisim_dir) / "main.nf"
+    if not camisim_main.is_file():
+        raise FileNotFoundError(f"CAMISIM entry point was not found: {camisim_main}")
+
+
 def write_camisim_files(rows, samples):
     genome_ids = [f"genome_{index:04d}" for index in range(1, len(rows) + 1)]
 
@@ -92,5 +114,6 @@ params.base_profile_name = "{snakemake.params.error_profile}"
 
 rows, samples = read_abundance_table(snakemake.input[0])
 validate_rows(rows, samples)
+validate_inputs(rows)
 write_camisim_files(rows, samples)
 write_config(len(rows), len(samples))

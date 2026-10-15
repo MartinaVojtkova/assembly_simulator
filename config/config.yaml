@@ -1,6 +1,6 @@
 abundance_table: input/abundance.tsv
 camisim_dir: tools/CAMISIM
-error_profile: data/Novaseq6000_error_profiles/novaseq6000-2019-newR
+error_profile: input/Novaseq6000_error_profiles/novaseq6000-2019-newR
 
 sample_size_gb: 0.96
 read_length: 150

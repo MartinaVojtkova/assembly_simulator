@@ -11,6 +11,14 @@ set -euo pipefail
 source /hpc/opt/conda/etc/profile.d/conda.sh
 conda activate assembly_simulator
 
+echo "Started: $(date --iso-8601=seconds)"
+echo "Host: $(hostname)"
+echo "Working directory: $(pwd)"
+echo "Snakemake: $(command -v snakemake)"
+echo "Nextflow: $(command -v nextflow)"
+
+mkdir -p logs benchmarks
+
 snakemake \
   --snakefile Snakefile \
   --cores "${SLURM_CPUS_PER_TASK}" \
