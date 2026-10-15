@@ -1,0 +1,16 @@
+abundance_table: input/abundance.tsv
+camisim_dir: tools/CAMISIM
+error_profile: ../data/Novaseq6000_error_profiles/novaseq6000-2019-newR
+
+sample_size_gb: 0.96
+read_length: 150
+fragment_mean: 350
+fragment_sd: 35
+seed: 14
+
+camisim_cores: 80
+camisim_mem_mb: 250000
+
+metaspades_threads: 20
+metaspades_mem_mb: 120000
+metaspades_kmers: [27, 47, 67, 87, 107, 127]

@@ -1,0 +1,9 @@
+.snakemake/
+work/
+results/
+logs/
+benchmarks/
+tools/
+
+*.log
+.DS_Store
