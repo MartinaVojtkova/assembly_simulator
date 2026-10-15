@@ -3,8 +3,8 @@
 #SBATCH --output=logs/ctxm14_sim_assembly.%j.out
 #SBATCH --error=logs/ctxm14_sim_assembly.%j.err
 #SBATCH --time=7-00:00:00
-#SBATCH --cpus-per-task=80
-#SBATCH --mem=1500G
+#SBATCH --cpus-per-task=64
+#SBATCH --mem=1000G
 
 set -euo pipefail
 
@@ -21,7 +21,7 @@ mkdir -p logs benchmarks
 
 snakemake \
   --snakefile Snakefile \
-  --cores "${SLURM_CPUS_PER_TASK}" \
+  --cores 64 \
   --use-conda \
   --rerun-incomplete \
   --printshellcmds \
